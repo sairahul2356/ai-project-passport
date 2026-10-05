@@ -1,0 +1,12 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+.env
+.env.local
+.gemini/
+
+# Deployment
+.vercel

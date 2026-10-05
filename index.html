@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Project Passport — Product-Led Growth Engine Prototype</title>
+  <meta name="description" content="Product-led growth campaign prototype for the NxtWave Growth Challenge. Discover the AI project you can build in 60 minutes based on your skills, interests & goals.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Chart.js for Admin Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Demo Control Bar -->
+  <div class="demo-bar">
+    <div>
+      <span class="badge badge-simulated" style="margin-right: 8px;">Simulated Campaign Environment</span>
+      <span>AI Project Passport • Product-led growth campaign prototype for the NxtWave Growth Challenge</span>
+    </div>
+    <div>
+      <button id="btn-load-demo" class="btn btn-sm btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;">⚡ Load Demo Data</button>
+      <button id="btn-reset-demo" class="btn btn-sm btn-secondary" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 6px;">🗑️ Reset Data</button>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header>
+    <div class="header-container">
+      <div class="logo-area">
+        <div class="logo-icon">P</div>
+        <div>
+          <h1 style="font-size: 1.15rem; font-weight: 800; line-height: 1.2;">AI Project <span class="gradient-text">Passport</span></h1>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">PRODUCT-LED GROWTH ENGINE</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" data-target-tab="landing" class="active">Discover AI Project</a></li>
+          <li><a href="#" data-target-tab="dashboard">Student Dashboard</a></li>
+          <li><a href="#" data-target-tab="leaderboard">Leaderboard & Battles</a></li>
+          <li><a href="#" data-target-tab="admin">Growth Control Room</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN APP VIEWS -->
+  <main id="app-root">
+
+    <!-- Referral Alert Banner (Shown if ?ref= is in URL) -->
+    <div id="ref-alert-banner" style="display: none; max-width: 1100px; margin: 20px auto 0; padding: 0 24px;"></div>
+
+    <!-- TAB 1: LANDING & PASSPORT VIEW -->
+    <section id="view-landing" class="tab-view">
+      
+      <!-- Hero Section (PART 20) -->
+      <div class="hero-section">
+        <div class="hero-disclaimer">
+          <span class="badge badge-simulated">⚠️ Product-led growth campaign prototype for the NxtWave Growth Challenge</span>
+        </div>
+
+        <h1 class="hero-title">
+          Build Your First AI Project in <span class="gradient-text">60 Minutes</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          Discover the AI project you can build in 60 minutes based on your skills, interests and goals. Don't just register for another webinar—get your Project Match Score and build live.
+        </p>
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <button id="btn-hero-cta" data-target-tab="passport" class="btn btn-primary btn-lg glow-primary" style="font-size: 1.15rem; padding: 16px 36px;" onclick="document.getElementById('passport-section').scrollIntoView({behavior:'smooth'})">
+            DISCOVER MY AI PROJECT ✨
+          </button>
+        </div>
+
+        <!-- Honest Stats Bar -->
+        <div style="display: flex; justify-content: center; gap: 24px; margin-top: 36px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.85rem;">
+          <div><strong>Goal:</strong> 500 Total Registrations</div>
+          <div>•</div>
+          <div><strong>Duration:</strong> 7 Days Campaign</div>
+          <div>•</div>
+          <div><strong>Budget:</strong> ₹2,000 Rewards Pool</div>
+          <div>•</div>
+          <div><strong>Modeled CAC:</strong> ₹4.00 / student target</div>
+        </div>
+
+        <!-- 4-Step Explainer Cards -->
+        <div class="explainer-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <div class="step-icon">⚡</div>
+            <h3 class="step-title">Take 60s AI Passport</h3>
+            <p class="step-desc">Answer 5 quick questions about your branch, programming level & placement goals.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <div class="step-icon">🤖</div>
+            <h3 class="step-title">Get Match Score & Idea</h3>
+            <p class="step-desc">Our deterministic engine matches you with a high-impact project & Match Score (0-100%).</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <div class="step-icon">👥</div>
+            <h3 class="step-title">Build With a Friend</h3>
+            <p class="step-desc">Register & share your link. When a friend joins, both unlock the joint Squad Seat.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <div class="step-icon">🚀</div>
+            <h3 class="step-title">Build Live in 60 Mins</h3>
+            <p class="step-desc">Attend the hands-on live workshop and ship a working AI prototype directly to GitHub.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI PROJECT PASSPORT WIZARD SECTION -->
+      <div id="passport-section" style="padding-top: 20px;">
+        
+        <div class="passport-container glass-panel glow-primary">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span class="badge badge-simulated" id="passport-step-label">Question 1 of 5</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">60-Second AI Match</span>
+          </div>
+
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="passport-progress-fill"></div>
+          </div>
+
+          <div id="passport-wizard">
+            
+            <!-- QUESTION 1 -->
+            <div class="passport-q" data-question="1" style="display: block;">
+              <h2 class="question-title">1. What is your Engineering Branch?</h2>
+              <p class="question-subtitle">We use your discipline to select domain-relevant datasets & project architectures.</p>
+              
+              <div class="options-grid">
+                <button class="option-btn" data-val="cse">
+                  <span>💻 Computer Science / IT / AI-DS</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="ece">
+                  <span>⚡ ECE / EEE / EIE (Electronics & Electrical)</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="mech">
+                  <span>⚙️ Mechanical / Civil / Aerospace</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="chem">
+                  <span>🧪 Chemical / Biotech / Materials</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="other">
+                  <span>🔧 Other Engineering Stream</span>
+                  <div class="option-check">✓</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="passport-q" data-question="2" style="display: none;">
+              <h2 class="question-title">2. What is your current Programming Experience?</h2>
+              <p class="question-subtitle">No prior AI experience required. We match difficulty to your current comfort level.</p>
+              
+              <div class="options-grid">
+                <button class="option-btn" data-val="beginner">
+                  <span>🌱 Beginner (Zero coding experience / C / Basic Excel)</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="intermediate">
+                  <span>🐍 Intermediate (Know Python basics, loops & functions)</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="advanced">
+                  <span>🚀 Advanced (Built full-stack web apps or ML scripts)</span>
+                  <div class="option-check">✓</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="passport-q" data-question="3" style="display: none;">
+              <h2 class="question-title">3. Which AI Domains interest you most?</h2>
+              <p class="question-subtitle">Select one or more fields you want to feature on your resume.</p>
+              
+              <div class="options-grid" data-multi="true">
+                <button class="option-btn" data-val="genai">
+                  <span>✨ Generative AI & LLMs (ChatGPT, Prompt Engineering)</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="vision">
+                  <span>👁️ Computer Vision & Edge IoT Sensors</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="automation">
+                  <span>🤖 Automation & AI Agents</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="data">
+                  <span>📊 Data Analytics & SQL AI Querying</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="web">
+                  <span>🌐 Web / App AI Integration</span>
+                  <div class="option-check">✓</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="passport-q" data-question="4" style="display: none;">
+              <h2 class="question-title">4. What is your primary Career Goal right now?</h2>
+              <p class="question-subtitle">This helps us emphasize the right resume talking points.</p>
+              
+              <div class="options-grid">
+                <button class="option-btn" data-val="placement">
+                  <span>🎯 Ace Final Year Campus Placements / Resume Booster</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="highrole">
+                  <span>💼 Land High-Paying AI / Software Engineer Role</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="startup">
+                  <span>💡 Build a Startup MVP / SaaS Prototype</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="project">
+                  <span>🎓 Complete Semester / Capstone Project Requirement</span>
+                  <div class="option-check">✓</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="passport-q" data-question="5" style="display: none;">
+              <h2 class="question-title">5. What is your preferred project build style?</h2>
+              <p class="question-subtitle">Choose how you prefer to work during the live workshop session.</p>
+              
+              <div class="options-grid">
+                <button class="option-btn" data-val="solo">
+                  <span>⚡ Quick 60-Minute Guided Build (Streamlined)</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="guided">
+                  <span>📖 Deep Step-by-Step Architecture Walkthrough</span>
+                  <div class="option-check">✓</div>
+                </button>
+                <button class="option-btn" data-val="squad">
+                  <span>👥 Team Squad Collaborative Build (With Classmates)</span>
+                  <div class="option-check">✓</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- WIZARD CONTROLS -->
+            <div style="display: flex; justify-content: space-between; margin-top: 28px;">
+              <button id="btn-passport-back" class="btn btn-secondary" style="display: none;">← Back</button>
+              <div></div>
+              <button id="btn-passport-next" class="btn btn-primary">Next Question →</button>
+            </div>
+
+          </div>
+
+          <!-- PROJECT RESULT CONTAINER -->
+          <div id="project-result-container" style="display: none;"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 2: STUDENT DASHBOARD VIEW -->
+    <section id="view-dashboard" class="tab-view" style="display: none;"></section>
+
+    <!-- TAB 3: LEADERBOARD VIEW -->
+    <section id="view-leaderboard" class="tab-view" style="display: none;"></section>
+
+    <!-- TAB 4: ADMIN GROWTH ENGINE VIEW -->
+    <section id="view-admin" class="tab-view" style="display: none;"></section>
+
+  </main>
+
+  <!-- REGISTRATION MODAL -->
+  <div class="modal-overlay" id="modal-registration">
+    <div class="modal-content glass-panel">
+      <button class="modal-close" id="modal-reg-close">&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="badge badge-squad" style="margin-bottom: 8px;">Free Workshop Registration</span>
+        <h3 style="font-size: 1.5rem; font-weight: 800;" class="gradient-text">Lock Your AI Project & Squad Seat</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">
+          Claiming project: <strong id="reg-project-name" style="color: white;">AI Project</strong>
+        </p>
+      </div>
+
+      <form id="reg-form">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" id="reg-name" class="form-input" placeholder="e.g. Rahul Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" id="reg-email" class="form-input" placeholder="e.g. rahul@college.edu.in" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">WhatsApp Number (10 digits) *</label>
+          <input type="tel" id="reg-whatsapp" class="form-input" placeholder="e.g. 9876543210" pattern="[0-9]{10}" maxlength="10" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">College / University Name *</label>
+          <input type="text" id="reg-college" class="form-input" placeholder="e.g. SRM Institute of Science and Tech" required />
+        </div>
+
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <label class="form-label">Branch *</label>
+            <select id="reg-branch" class="form-select">
+              <option value="CSE / IT / AI-DS">CSE / IT / AI-DS</option>
+              <option value="ECE / EEE / EIE">ECE / EEE / EIE</option>
+              <option value="Mechanical / Civil / Aerospace">Mechanical / Civil</option>
+              <option value="Chemical / Biotech / Materials">Chemical / Biotech</option>
+              <option value="Other Stream">Other Stream</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Graduation Year</label>
+            <select id="reg-gradyear" class="form-select">
+              <option value="2027" selected>2027 (Final Year)</option>
+              <option value="2026">2026</option>
+              <option value="2028">2028</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 12px; border-radius: 8px; font-size: 0.8rem; color: #a7f3d0;">
+          👥 <strong>Squad Seat Benefit:</strong> Registration generates your instant referral code. When a friend joins, BOTH of you unlock the Proposed Team Project Extension!
+        </div>
+
+        <button type="submit" class="btn btn-accent btn-full glow-primary" style="font-size: 1.1rem; padding: 14px;">
+          Complete Registration & Lock Pass 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Custom App JS -->
+  <script src="app.js"></script>
+
+</body>
+</html>
